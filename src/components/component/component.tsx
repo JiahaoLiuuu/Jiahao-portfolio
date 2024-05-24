@@ -10,13 +10,14 @@ import { ModeToggle } from "./theme-toggle";
 import { BugOff, Menu, Linkedin, Github, Twitter } from "lucide-react";
 import Image from "next/image";
 import imageSrc from "../../../public/elephant.jpg"
-import { useEffect, useRef, RefObject, useState } from 'react';
+import { useEffect, useRef, RefObject, useState, useCallback  } from 'react';
 
 export function Component() {
   const aboutRef = useRef<HTMLElement | null>(null);
   const skillsRef = useRef<HTMLElement | null>(null);
   const projectsRef = useRef<HTMLElement | null>(null);
   const contactRef = useRef<HTMLElement | null>(null);
+  const sheetContentRef = useRef<HTMLDivElement>(null);
 
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
@@ -25,6 +26,13 @@ export function Component() {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
     setIsSheetOpen(false);
   };
+
+  const handleSheetOpenChange = useCallback(
+    (open: boolean) => {
+      setIsSheetOpen(open);
+    },
+    [setIsSheetOpen]
+  );
 
   useEffect(() => {
     const aboutSection = document.getElementById('about');
@@ -38,6 +46,23 @@ export function Component() {
     if (contactSection) contactRef.current = contactSection;
   }, []);
   
+  useEffect(() => {
+    const handlePointerDownOutside = (event: MouseEvent) => {
+      if (
+        sheetContentRef.current &&
+        !sheetContentRef.current.contains(event.target as Node)
+      ) {
+        setIsSheetOpen(false);
+      }
+    };
+  
+    document.addEventListener('pointerdown', handlePointerDownOutside);
+  
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDownOutside);
+    };
+  }, []);
+
   return (
     <>
       <header className="fixed top-0 left-0 z-50 w-full  px-4 py-3 backdrop-blur-md ">
@@ -80,14 +105,14 @@ export function Component() {
             </Link>
             <ModeToggle />
           </nav>
-          <Sheet open={isSheetOpen}>
+          <Sheet open={isSheetOpen} onOpenChange={handleSheetOpenChange}>
             <SheetTrigger asChild onClick={() => setIsSheetOpen(!isSheetOpen)}>
               <Button className="lg:hidden" size="icon" variant="outline">
                 <Menu />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
+            <SheetContent side="left" ref={sheetContentRef}>
               <div className="grid gap-4 py-6">
                 <Link
                   className="flex w-full items-center py-2 text-lg font-semibold"
