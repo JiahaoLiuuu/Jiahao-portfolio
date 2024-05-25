@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -7,13 +7,28 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ModeToggle } from "./theme-toggle";
-import { BugOff, Menu, Linkedin, Github, Twitter } from "lucide-react";
+import {
+  BugOff,
+  Menu,
+  Linkedin,
+  Github,
+  Database,
+  Code,
+  Library,
+  Drill,
+} from "lucide-react";
+import { CardContent, Card } from "@/components/ui/card";
 import Image from "next/image";
-import imageSrc from "../../../public/elephant.jpg"
-import { useEffect, useRef, RefObject, useState, useCallback  } from 'react';
+import imageSrc from "../../../public/elephant.jpg";
+import aboutImgSrc from "../../../public/Image_20240524232922.jpg";
+import circleImgSrc from "../../../public/cropped_image.png";
+import prj1ImgSrc1 from "../../../public/prtfloScreenshot1.png";
+import prj1ImgSrc2 from "../../../public/prtfloScreenshot2.png";
+import { useEffect, useRef, RefObject, useState, useCallback } from "react";
 
 export function Component() {
   const aboutRef = useRef<HTMLElement | null>(null);
+  const expRef = useRef<HTMLElement | null>(null);
   const skillsRef = useRef<HTMLElement | null>(null);
   const projectsRef = useRef<HTMLElement | null>(null);
   const contactRef = useRef<HTMLElement | null>(null);
@@ -21,9 +36,12 @@ export function Component() {
 
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-  const handleScrollToSection = (event: React.MouseEvent<HTMLAnchorElement>,ref: RefObject<HTMLElement>) => {
+  const handleScrollToSection = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    ref: RefObject<HTMLElement>
+  ) => {
     event.preventDefault();
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    ref.current?.scrollIntoView({ behavior: "smooth" });
     setIsSheetOpen(false);
   };
 
@@ -35,17 +53,19 @@ export function Component() {
   );
 
   useEffect(() => {
-    const aboutSection = document.getElementById('about');
-    const skillsSection = document.getElementById('skills');
-    const projectsSection = document.getElementById('projects');
-    const contactSection = document.getElementById('contact');
+    const aboutSection = document.getElementById("about");
+    const expSection = document.getElementById("experience");
+    const skillsSection = document.getElementById("skills");
+    const projectsSection = document.getElementById("projects");
+    const contactSection = document.getElementById("contact");
 
     if (aboutSection) aboutRef.current = aboutSection;
+    if (expSection) expRef.current = expSection;
     if (skillsSection) skillsRef.current = skillsSection;
     if (projectsSection) projectsRef.current = projectsSection;
     if (contactSection) contactRef.current = contactSection;
   }, []);
-  
+
   useEffect(() => {
     const handlePointerDownOutside = (event: MouseEvent) => {
       if (
@@ -55,11 +75,11 @@ export function Component() {
         setIsSheetOpen(false);
       }
     };
-  
-    document.addEventListener('pointerdown', handlePointerDownOutside);
-  
+
+    document.addEventListener("pointerdown", handlePointerDownOutside);
+
     return () => {
-      document.removeEventListener('pointerdown', handlePointerDownOutside);
+      document.removeEventListener("pointerdown", handlePointerDownOutside);
     };
   }, []);
 
@@ -67,9 +87,10 @@ export function Component() {
     <>
       <header className="fixed top-0 left-0 z-50 w-full  px-4 py-3 backdrop-blur-md ">
         <div className="container mx-auto flex items-center justify-between">
-          <Link className="flex items-center gap-2 font-semibold" 
-              href="#"
-              onClick={(e) => handleScrollToSection(e, aboutRef)}
+          <Link
+            className="flex items-center gap-2 font-semibold"
+            href="#"
+            onClick={(e) => handleScrollToSection(e, aboutRef)}
           >
             <BugOff />
             <span className="text-lg">Jiahao Liu</span>
@@ -81,6 +102,13 @@ export function Component() {
               onClick={(e) => handleScrollToSection(e, aboutRef)}
             >
               About
+            </Link>
+            <Link
+              className="text-sm font-medium hover:underline underline-offset-4"
+              href="#"
+              onClick={(e) => handleScrollToSection(e, expRef)}
+            >
+              Experience
             </Link>
             <Link
               className="text-sm font-medium hover:underline underline-offset-4"
@@ -124,22 +152,29 @@ export function Component() {
                 <Link
                   className="flex w-full items-center py-2 text-lg font-semibold"
                   href="#"
+                  onClick={(e) => handleScrollToSection(e, expRef)}
+                >
+                  Experience
+                </Link>
+                <Link
+                  className="flex w-full items-center py-2 text-lg font-semibold"
+                  href="#"
                   onClick={(e) => handleScrollToSection(e, skillsRef)}
-                  >
+                >
                   Skills
                 </Link>
                 <Link
                   className="flex w-full items-center py-2 text-lg font-semibold"
                   href="#"
                   onClick={(e) => handleScrollToSection(e, projectsRef)}
-                  >
+                >
                   Projects
                 </Link>
                 <Link
                   className="flex w-full items-center py-2 text-lg font-semibold"
                   href="#"
                   onClick={(e) => handleScrollToSection(e, contactRef)}
-                  >
+                >
                   Contact
                 </Link>
                 <ModeToggle />
@@ -157,10 +192,9 @@ export function Component() {
               </h2>
               <p className="text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 I am a software developer with a passion for creating innovative
-                applications. With several years of experience
-                in the industry, I have honed my skills in a variety of
-                programming languages and frameworks, and Iam always eager to
-                learn new technologies.
+                applications. With several years of experience in the industry,
+                I have honed my skills in a variety of programming languages and
+                frameworks, and Iam always eager to learn new technologies.
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link
@@ -181,95 +215,142 @@ export function Component() {
               </div>
             </div>
             <Image
-              src={imageSrc}
+              src={aboutImgSrc}
               alt="About"
               className="mx-auto overflow-hidden rounded-xl object-cover sm:w-full"
             />
           </div>
         </section>
-        <section
-          className="py-6 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800 "
-          id="skills"
-        >
-          <div className="container mx-auto grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-12">
-            <Image
-              alt="Skills"
-              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-              height="310"
-              src={imageSrc}
-              width="550"
-            />
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                My Skills
-              </h2>
-              <p className="text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                I have a diverse set of skills that I have developed over the
-                years, including proficiency in various programming languages,
-                frameworks, and tools. I am always eager to learn and expand my
-                knowledge.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-lg bg-white p-4 shadow-sm dark:bg-gray-950">
-                  <h3 className="text-lg font-semibold">Languages</h3>
-                  <ul className="mt-2 space-y-1 text-sm text-gray-500 dark:text-gray-400">
-                    <li>C++</li>
-                    <li>JavaScript</li>
-                    <li>C#</li>
-                    <li>cobol</li>
-                    <li>HTML/CSS</li>
-                  </ul>
+        <section className="py-12 md:py-16 lg:py-20 lg:px-20 bg-gray-100 dark:bg-gray-800" id = "experience">
+        <div className="container px-4 md:px-6">
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Professional Experience</h2>
+          <div className="grid gap-6">
+            <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-950">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold">Global Shop Solutions</h3>
+                  <div className="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium dark:bg-gray-800">2020.6 - Current</div>
                 </div>
-                <div className="rounded-lg bg-white p-4 shadow-sm dark:bg-gray-950">
-                  <h3 className="text-lg font-semibold">Framworks</h3>
-                  <ul className="mt-2 space-y-1 text-sm text-gray-500 dark:text-gray-400">
-                    <li>Node.js</li>
-                    <li>React</li>
-                    <li>Next.js</li>
-                  </ul>
-                </div>
-                <div className="rounded-lg bg-white p-4 shadow-sm dark:bg-gray-950">
-                  <h3 className="text-lg font-semibold">Databases</h3>
-                  <ul className="mt-2 space-y-1 text-sm text-gray-500 dark:text-gray-400">
-                    <li>MySQL</li>
-                    <li>PostgreSQL</li>
-                    <li>MongoDB</li>
-                    <li>Pervasive PSQL</li>
-                  </ul>
-                </div>
-                <div className="rounded-lg bg-white p-4 shadow-sm dark:bg-gray-950">
-                  <h3 className="text-lg font-semibold">Tools</h3>
-                  <ul className="mt-2 space-y-1 text-sm text-gray-500 dark:text-gray-400">
-                    <li>Git</li>
-                    <li>SVN</li>
-                    <li>AWS</li>
-                  </ul>
-                </div>
+                <div className="text-gray-500 dark:text-gray-400">ERP Software Developer</div>
+                <p className="text-sm/relaxed">
+                  I joined the Software Modernization team as a software developer at Global Shop Solutions 
+                  right after I graduate in 2020.5. 
+                </p>
+                <ul className="list-disc pl-6 space-y-2 mt-2">
+                  <li>
+                    Convert legacy programs written in COBOL into VB.NET-compatible languages and frameworks
+                  </li>
+                  <li>
+                    Analyze code and resolve issues in legacy programs during conversion, including refactoring code, rewriting
+                    logic, and ensuring compatibility with new implementations
+                  </li>
+                  <li>
+                    Create and maintain tools to assist the conversion process
+                  </li>
+                  <li>
+                    Participate in data setup and testing of converted programs, ensuring quality and functionality, and report
+                    results to the scrum master, and create comprehensive QA documentation if needed
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+        </section>{" "}
+        <section className="py-6 md:py-24 lg:py-32  " id="skills"
+        >
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  My Skills
+                </h2>
+                <p className="max-w-[1500px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                  These are the top skills I have developed as a software
+                  developer through my academic and professional experience.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-12 justify-center max-w-screen-xl">
+              <Card>
+                <CardContent className="flex flex-col items-center justify-center p-6 gap-4">
+                  <Code />
+                  <div className="space-y-2 text-center">
+                    <h3 className="text-xl font-bold">Languages</h3>
+                    <p className="text-gray-500 dark:text-gray-400">
+                      Proficient in C++, C#, JavaScript, COBOL, HTML/CSS,
+                      VB.NET, Rust and so on
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="flex flex-col items-center justify-center p-6 gap-4">
+                  <Library />
+                  <div className="space-y-2 text-center">
+                    <h3 className="text-xl font-bold">Libraries</h3>
+                    <p className="text-gray-500 dark:text-gray-400">
+                      Experienced using Tailwind, Bootstrap, React, Next.js,
+                      Shadcn UI, QT, and popular liabraries and frameworks
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="flex flex-col items-center justify-center p-6 gap-4">
+                  <Database />
+                  <div className="space-y-2 text-center">
+                    <h3 className="text-xl font-bold">Database Management</h3>
+                    <p className="text-gray-500 dark:text-gray-400">
+                      Knowledgeable in designing and implementing relational and
+                      NoSQL databases, including MySQL, PostgreSQL, and MongoDB,
+                      and Pervasive PSQL.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="flex flex-col items-center justify-center p-6 gap-4">
+                  <Drill />
+                  <div className="space-y-2 text-center">
+                    <h3 className="text-xl font-bold">Other</h3>
+                    <p className="text-gray-500 dark:text-gray-400">
+                      Familiar with version control tools, including git and
+                      svn. Experience in using AWS, TestArchitect, Windows Form
+                      development, and so on......
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </section>
-        <section className="py-12 md:py-24 lg:py-32" id="projects">
-          <div className="container mx-auto grid items-center gap-6 px-4 md:px-6">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+        <section className="py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800" id="projects">
+          <div className="container mx-auto grid flex-col text-centeritems-center gap-6 px-4 md:px-6">
+            <div className="space-y-4 text-center">
+              <h2 className="text-3xl font-bold  tracking-tighter sm:text-4xl md:text-5xl">
                 My Projects
               </h2>
               <p className="text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                I have worked on a variety of projects.
-                Here are a few examples of my work:
+                I have worked on a variety of projects. Here are a few examples
+                of my work:
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               <div className="relative group overflow-hidden rounded-lg">
-                <Link className="absolute inset-0 z-10" href="#">
+                <Link className="absolute inset-0 z-10" href="https://github.com/JiahaoLiuuu/Jiahao-portfolio#" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <span className="sr-only">View</span>
                 </Link>
                 <Image
                   alt="Project 1"
                   className="object-cover w-full h-60"
                   height={300}
-                  src={imageSrc}
+                  src={ prj1ImgSrc2}
                   style={{
                     aspectRatio: "400/300",
                     objectFit: "cover",
@@ -277,11 +358,9 @@ export function Component() {
                   width={400}
                 />
                 <div className="bg-white p-4 dark:bg-gray-950">
-                  <h3 className="font-semibold text-lg md:text-xl">
-                    Project1
-                  </h3>
+                  <h3 className="font-semibold text-lg md:text-xl">Personal Portfolio</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Description.
+                    Developed with Next.js and Shadcn/ui, deployed on Vercel .
                   </p>
                 </div>
               </div>
@@ -301,11 +380,9 @@ export function Component() {
                   width={400}
                 />
                 <div className="bg-white p-4 dark:bg-gray-950">
-                  <h3 className="font-semibold text-lg md:text-xl">
-                  Project2
-                  </h3>
+                  <h3 className="font-semibold text-lg md:text-xl">Project2</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Description.
+                    This is a description placeholder for project2. 
                   </p>
                 </div>
               </div>
@@ -325,20 +402,16 @@ export function Component() {
                   width={400}
                 />
                 <div className="bg-white p-4 dark:bg-gray-950">
-                  <h3 className="font-semibold text-lg md:text-xl">
-                  Project3
-                  </h3>
+                  <h3 className="font-semibold text-lg md:text-xl">Project3</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Description.
+                    This is a description placeholder for project3.
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <section
-          className="py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800"
-          id="contact"
+        <section className="py-12 md:py-24 lg:py-32 " id="contact"
         >
           <div className="container mx-auto grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-12">
             <div className="space-y-4">
@@ -375,7 +448,7 @@ export function Component() {
                 alt="John Doe"
                 className="rounded-full"
                 height={200}
-                src={imageSrc}
+                src={circleImgSrc}
                 style={{
                   aspectRatio: "200/200",
                   objectFit: "cover",
@@ -405,16 +478,15 @@ export function Component() {
                   <Linkedin />
                   <span className="sr-only">LinkedIn</span>
                 </Link>
-
               </div>
             </div>
           </div>
         </section>
       </main>
-      <footer className="bg-gray-100 py-6 dark:bg-gray-800">
+      <footer>
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:flex-row md:px-6">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            © 2024 Jiahao Liu.
+            © 2024 Jiahao Liu
           </p>
         </div>
       </footer>
