@@ -85,7 +85,7 @@ export function Component() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 z-50 w-full  px-4 py-3 backdrop-blur-md ">
+      <header className="fixed top-0 left-0 z-50 w-full  px-4 py-3 bg-slate-100 opacity-75 dark:bg-zinc-900">
         <div className="container mx-auto flex items-center justify-between">
           <Link
             className="flex items-center gap-2 font-semibold"
