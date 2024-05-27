@@ -1,0 +1,3 @@
+.scalable {
+  @apply transition-transform duration-150 hover:scale-105;
+}
