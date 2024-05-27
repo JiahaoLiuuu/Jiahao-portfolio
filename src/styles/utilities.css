@@ -1,3 +1,7 @@
 .scalable {
   @apply transition-transform duration-150 hover:scale-105;
 }
+
+.nav-transition {
+  transition: transform 0.3s ease-in-out; 
+}
