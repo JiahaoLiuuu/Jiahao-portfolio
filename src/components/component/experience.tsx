@@ -16,12 +16,11 @@ export default function Experience() {
           <div className="grid gap-6">
             <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-950">
               <div className="space-y-2">
-                <div className="flex flex-col items-start sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex items-center">
-                    <h3 className="text-xl font-bold">Global Shop Solutions</h3>
-                    <div className="ml-2 rounded-full bg-gray-100 px-4 py-1 text-sm font-medium dark:bg-gray-800">
-                      2020.6 - Current
-                    </div>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold">Global Shop Solutions</h3>
+                  <div className="rounded-full bg-gray-100 px-5 py-1 text-sm font-medium dark:bg-gray-800">
+                    {" "}
+                    2020.6 - Current{" "}
                   </div>
                 </div>
                 <div className="text-gray-500 dark:text-gray-400">

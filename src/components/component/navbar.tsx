@@ -97,7 +97,7 @@ export default function NavBar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 z-50 w-full px-4 py-3 bg-slate-100 opacity-75 dark:bg-zinc-900 ${
+        className={` sticky top-0 left-0 z-50 w-full border-b dark:border-gray-600 backdrop-blur px-4 py-3 supports-[backdrop-filter]:bg-background/60 ${
           visible || window.innerWidth > 768 ? "" : "transform -translate-y-full"
         } nav-transition`}
       >
