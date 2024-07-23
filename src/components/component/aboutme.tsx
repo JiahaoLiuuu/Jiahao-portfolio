@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import "../../styles/utilities.css";
 import Image from "next/image";
-import aboutImgSrc from "../../../public/Image_20240524232922.jpg";
+import aboutImgSrc from "../../../public/Image_20240723013747.jpg";
 
 export default function AboutMe() {
   const contactRef = useRef<HTMLElement | null>(null);
