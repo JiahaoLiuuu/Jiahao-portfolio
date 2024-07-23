@@ -18,8 +18,8 @@ export async function POST(req) {
   try {
     console.log('Attempting to send email...');
     const data = await resend.emails.send({
-      from: 'Your Website <onboarding@resend.dev>',
-      to: 'your-email@example.com', // Replace with your actual email address
+      from: 'Jiahao Liu <onboarding@resend.dev>', // You can change this once you've verified your domain
+      to: 'liujiahaokyle@gmail.com', // Your verified email address
       subject: 'New Contact Form Submission',
       html: `
         <h1>New Contact Form Submission</h1>

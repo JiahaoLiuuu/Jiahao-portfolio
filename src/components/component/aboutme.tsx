@@ -51,7 +51,7 @@ export default function AboutMe() {
             I am a software developer with a passion for creating innovative
             applications. With several years of experience in the industry, I
             have honed my skills in a variety of programming languages and
-            frameworks, and Iam always eager to learn new technologies.
+            frameworks, and I am always eager to learn new technologies.
           </p>
           <div className="flex flex-col gap-2 min-[400px]:flex-row">
             <Link
