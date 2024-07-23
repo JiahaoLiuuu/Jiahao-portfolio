@@ -7,7 +7,7 @@ import "../../styles/utilities.css";
 export default function Experience() {
   return (
     <>
-      <div className="container px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6 ">
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
             Professional Experience
@@ -16,9 +16,9 @@ export default function Experience() {
           <div className="grid gap-6">
             <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-950">
               <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-bold">Global Shop Solutions</h3>
-                  <div className="rounded-full bg-gray-100 px-5 py-1 text-sm font-medium dark:bg-gray-800">
+                <div className="flex flex-wrap items-center justify-between">
+                  <h3 className="text-xl font-bold  mr-2">Global Shop Solutions</h3>
+                  <div className="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium dark:bg-gray-800 whitespace-nowrap">
                     {" "}
                     2020.6 - Current{" "}
                   </div>
