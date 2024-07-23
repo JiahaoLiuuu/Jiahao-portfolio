@@ -19,7 +19,18 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
+type SubmitStatus = 'success' | 'error' | null;
+
 export default function ContactMe() {
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(null);
+
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -28,6 +39,42 @@ export default function ContactMe() {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    }
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -42,24 +89,46 @@ export default function ContactMe() {
             collaborations. Feel free to reach out to me using the form below,
             and I will get back to you as soon as possible.
           </p>
-          <form className="grid gap-4">
+          <form className="grid gap-4" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
-                <Input id="name" required />
+                <Input
+                  id="name"
+                  required
+                  value={formData.name}
+                  onChange={handleInputChange}
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" required type="email" />
+                <Input
+                  id="email"
+                  required
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
             <div className="space-y-2">
               <Label htmlFor="message">Message</Label>
-              <Textarea id="message" required />
+              <Textarea
+                id="message"
+                required
+                value={formData.message}
+                onChange={handleInputChange}
+              />
             </div>
-            <Button className="w-full" type="submit">
-              Send Message
+            <Button className="w-full" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
+            {submitStatus === 'success' && (
+              <p className="text-green-600">Message sent successfully!</p>
+            )}
+            {submitStatus === 'error' && (
+              <p className="text-red-600">Failed to send message. Please try again.</p>
+            )}
           </form>
         </div>
         <div className="flex flex-col items-center justify-center space-y-4">
