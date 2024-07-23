@@ -1,25 +1,32 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resend;
+
+try {
+  resend = new Resend(process.env.RESEND_API_KEY);
+} catch (error) {
+  console.error('Failed to initialize Resend:', error);
+}
 
 export async function POST(req) {
-  const { name, email, message } = await req.json();
-
-  console.log('Received form submission:', { name, email, message });
-
-  if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY is not set');
+  if (!resend) {
+    console.error('Resend is not initialized. Check your RESEND_API_KEY.');
     return new Response(JSON.stringify({ error: 'Server configuration error' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
+  const { name, email, message } = await req.json();
+
+  console.log('Received form submission:', { name, email, message });
+
   try {
     console.log('Attempting to send email...');
     const data = await resend.emails.send({
-      from: 'Jiahao Liu <onboarding@resend.dev>', // You can change this once you've verified your domain
-      to: 'liujiahaokyle@gmail.com', // Your verified email address
+      from: 'Jiahao Liu <onboarding@resend.dev>',
+      to: 'liujiahaokyle@gmail.com',
+      reply_to: email,
       subject: 'New Contact Form Submission',
       html: `
         <h1>New Contact Form Submission</h1>
