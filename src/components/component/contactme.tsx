@@ -81,10 +81,10 @@ export default function ContactMe() {
     <>
       <div className="container mx-auto grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-12">
         <div className="space-y-4">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center sm:text-left">
             Get in Touch
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+          <p className="text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-justify sm:text-left">
             I am always excited to connect with new people and discuss potential
             collaborations. Feel free to reach out to me using the form below,
             and I will get back to you as soon as possible.

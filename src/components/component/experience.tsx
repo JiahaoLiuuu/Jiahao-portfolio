@@ -7,9 +7,9 @@ import "../../styles/utilities.css";
 export default function Experience() {
   return (
     <>
-      <div className="container mx-auto px-4 md:px-6 ">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="space-y-6">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center sm:text-left">
             Professional Experience
           </h2>
 

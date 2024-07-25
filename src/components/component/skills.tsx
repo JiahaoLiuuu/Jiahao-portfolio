@@ -15,7 +15,7 @@ export default function Skills() {
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                   My Skills
                 </h2>
-                <p className="max-w-[1500px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                <p className="text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-justify sm:text-left">
                   These are the top skills I have developed as a software
                   developer through my academic and professional experience.
                 </p>

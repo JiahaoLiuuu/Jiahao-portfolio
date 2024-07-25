@@ -40,7 +40,7 @@ export function Component() {
       <footer>
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:flex-row md:px-6">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            © 2024 Jiahao Liu
+            © 2024 by Jiahao Liu
           </p>
         </div>
       </footer>
