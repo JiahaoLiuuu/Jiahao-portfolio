@@ -7,7 +7,7 @@ const styles = `
   .theme-switch {
     width: 62px;
     height: 32px;
-    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    background-color: #e2e8f0; /* Light gray for light mode */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,20 +17,8 @@ const styles = `
     position: relative;
     transition: all 0.3s ease;
   }
-  .theme-switch::before {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    right: 2px;
-    bottom: 2px;
-    background-color: white;
-    border-radius: 48px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .theme-switch.dark::before {
-    opacity: 0.1;
+  .theme-switch.dark {
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
   }
   .theme-switch-handle {
     position: absolute;
@@ -45,6 +33,7 @@ const styles = `
     align-items: center;
     transition: transform 0.3s ease;
     z-index: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
   .theme-switch.dark .theme-switch-handle {
     transform: translateX(30px);
