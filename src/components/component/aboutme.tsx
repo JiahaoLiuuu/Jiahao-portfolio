@@ -7,7 +7,6 @@ import aboutImgSrc from "../../../public/Image_20240723013747.jpg";
 import "../ui/neonText.css";
 import { Sparkles } from "lucide-react";
 
-
 export default function AboutMe() {
   const contactRef = useRef<HTMLElement | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -47,15 +46,15 @@ export default function AboutMe() {
             frameworks, and I am always eager to learn new technologies.
           </p>
           <div className="flex flex-col items-center sm:items-start gap-4 sm:flex-row">
-          <Link
-                  className="bounce-on-hover inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg transition-all duration-300"
-                  href="/JiahaoLiu-Resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Sparkles className="w-5 h-5 mr-2" />
-                  My Resume
-                </Link>
+            <Link
+              className="bounce-on-hover w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-full text-base font-medium text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              href="/JiahaoLiu-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Sparkles className="w-5 h-5 mr-2" />
+              My Resume
+            </Link>
             <Link
               className="bounce-on-hover w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-full border-2 border-gray-300 bg-transparent px-8 text-sm font-medium text-gray-700 shadow-md transition-all duration-300 ease-in-out hover:bg-gray-100 hover:text-gray-900 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
               href="#"
