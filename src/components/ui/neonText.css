@@ -1,32 +1,32 @@
 .neonText {
-    animation: neon-flicker 1.5s infinite alternate;
-    color: #00a8e8; /* Light blue */
-    text-shadow: 0 0 2px #000, 0 0 5px #000; /* Text outline for better contrast */
+  animation: neon-flicker 1.5s infinite alternate;
+  color: #3b82f6; /* Bright blue from gradient-text */
+  text-shadow: 0 0 2px #000, 0 0 5px #000; /* Text outline for better contrast */
+}
+
+@keyframes neon-flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    color: #fff;
+    text-shadow:
+      0 0 4px #3b82f6,
+      0 0 11px #3b82f6,
+      0 0 19px #3b82f6,
+      0 0 40px #3b82f6,
+      0 0 80px #3b82f6,
+      0 0 90px #8b5cf6,
+      0 0 100px #8b5cf6,
+      0 0 150px #8b5cf6;
   }
-  
-  @keyframes neon-flicker {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-      color: #fff;
-      text-shadow:
-        0 0 4px #0ff,
-        0 0 11px #0ff,
-        0 0 19px #0ff,
-        0 0 40px #0ff,
-        0 0 80px #0ff,
-        0 0 90px #0ff,
-        0 0 100px #0ff,
-        0 0 150px #0ff;
-    }
-   
-    20%, 24%, 55% {        
-      text-shadow: 0 0 2px #000, 0 0 5px #000;
-      color: #00a8e8;
-    }    
+ 
+  20%, 24%, 55% {        
+    text-shadow: 0 0 2px #000, 0 0 5px #000;
+    color: #3b82f6;
+  }    
+}
+
+/* Optional: Adjust for dark mode if needed */
+@media (prefers-color-scheme: dark) {
+  .neonText {
+    color: #3b82f6;
   }
-  
-  /* Optional: Adjust for dark mode if needed */
-  @media (prefers-color-scheme: dark) {
-    .neonText {
-      color: #00a8e8;
-    }
-  }
+}
