@@ -25,7 +25,60 @@ export default function NavBar() {
     setMounted(true);
   }, []);
 
-  // ... (keep other useEffect hooks and functions as they were)
+  // Handle scroll to section
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+    e.preventDefault();
+    const element = document.getElementById(section);
+    if (element) {
+      const yOffset = -80; // Adjust this value based on your navbar height
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+    setActiveSection(section);
+    setIsSheetOpen(false);
+  };
+
+  // Handle sheet open/close
+  const handleSheetOpenChange = (open: boolean) => {
+    setIsSheetOpen(open);
+  };
+
+  // Handle scroll visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const isVisible = prevScrollPos > currentScrollPos || currentScrollPos < 10;
+
+      setPrevScrollPos(currentScrollPos);
+      setVisible(isVisible);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos]);
+
+  // Handle active section on scroll
+  useEffect(() => {
+    const handleSectionVisibility = () => {
+      const sectionElements = sections.map(section => ({
+        id: section,
+        element: document.getElementById(section),
+      }));
+
+      const currentSection = sectionElements.find(({ element }) => {
+        if (!element) return false;
+        const rect = element.getBoundingClientRect();
+        return rect.top <= 100 && rect.bottom >= 100;
+      });
+
+      if (currentSection) {
+        setActiveSection(currentSection.id);
+      }
+    };
+
+    window.addEventListener('scroll', handleSectionVisibility);
+    return () => window.removeEventListener('scroll', handleSectionVisibility);
+  }, [sections]);
 
   if (!mounted) {
     return null;
@@ -74,8 +127,8 @@ export default function NavBar() {
         </nav>
         <div className="flex items-center gap-2 lg:hidden">
           <ModeToggle />
-          <Sheet open={isSheetOpen} onOpenChange={handleSheetOpenChange}>
-            <SheetTrigger asChild onClick={() => setIsSheetOpen(!isSheetOpen)}>
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+            <SheetTrigger asChild>
               <Button size="icon" variant="outline">
                 {isSheetOpen ? <X /> : <Menu />}
                 <span className="sr-only">Toggle navigation menu</span>
