@@ -6,6 +6,7 @@ import "../../styles/utilities.css";
 import Image from "next/image";
 import imageSrc from "../../../public/elephant.jpg";
 import prj1ImgSrc2 from "../../../public/prtfloScreenshot2.png";
+import prj2ImgSrc from "../../../public/flowchart.png"
 import { Github, ExternalLink } from "lucide-react";
 
 const projectsData = [
@@ -16,10 +17,10 @@ const projectsData = [
     link: "https://github.com/JiahaoLiuuu/Jiahao-portfolio#",
   },
   {
-    title: "Project 2",
-    description: "This is a description placeholder for project 2.",
-    image: imageSrc,
-    link: "#",
+    title: "AI Trading Agent",
+    description: "A machine learing AI trading agent, implemented with decision trees, q-learning, regression, and so on.",
+    image: prj2ImgSrc,
+    link: "https://github.com/JiahaoLiuuu/Mechine-Learning-for-Trading.git",
   },
   {
     title: "Project 3",
