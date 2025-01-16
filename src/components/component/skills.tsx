@@ -8,12 +8,12 @@ const skillsData = [
   {
     icon: <Code className="w-12 h-12 text-blue-500" />,
     title: "Languages",
-    description: "Proficient in C++, C#, JavaScript, COBOL, HTML/CSS, VB.NET, Rust and more",
+    description: "Proficient in C++, C#, JavaScript, COBOL, HTML/CSS, VB.NET, Python, Rust and more",
   },
   {
     icon: <Library className="w-12 h-12 text-purple-500" />,
     title: "Libraries & Frameworks",
-    description: "Experienced with Tailwind, Bootstrap, React, Next.js, Shadcn UI, QT, and other popular libraries",
+    description: "Experienced with Tailwind, Bootstrap, MERN stack, QT, Pandas, and other popular libraries",
   },
   {
     icon: <Database className="w-12 h-12 text-green-500" />,
@@ -23,7 +23,7 @@ const skillsData = [
   {
     icon: <Wrench className="w-12 h-12 text-orange-500" />,
     title: "Tools & Technologies",
-    description: "Proficient with version control (git, svn), AWS, TestArchitect, Windows Form development, and more",
+    description: "Proficient with machine learning, version control (git, svn), AWS, TestArchitect, Unity 3D, Windows Form development, and more",
   },
 ];
 

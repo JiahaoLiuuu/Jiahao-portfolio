@@ -114,7 +114,11 @@ export default function ContactMe() {
                   rows={4}
                 />
               </div>
-              <Button className="w-full gradient-bg text-white" type="submit" disabled={isSubmitting}>
+              <Button 
+                className="w-full gradient-bg text-white transform transition-all duration-200 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" 
+                type="submit" 
+                disabled={isSubmitting}
+              >
                 {isSubmitting ? "Sending..." : <><Send className="mr-2 h-4 w-4" /> Send Message</>}
               </Button>
               {submitStatus === 'success' && (
