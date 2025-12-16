@@ -9,10 +9,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        'pixel-header': ['var(--font-pixel-header)', 'monospace'],
+        'pixel-body': ['var(--font-pixel-body)', 'monospace'],
+      },
+      borderRadius: {
+        lg: '0',
+        md: '0',
+        sm: '0',
+        DEFAULT: '0',
+        full: '0', 
+      },
+      boxShadow: {
+        'pixel': '4px 4px 0 0 rgba(0,0,0,1)',
+        'pixel-sm': '2px 2px 0 0 rgba(0,0,0,1)',
+        'pixel-lg': '6px 6px 0 0 rgba(0,0,0,1)',
       },
       colors: {
         cyan: {
