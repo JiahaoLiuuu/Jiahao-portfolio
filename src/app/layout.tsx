@@ -17,7 +17,7 @@ const vt323 = VT323({
 });
 
 export const metadata: Metadata = {
-  title: "Jiahao's Pixel Portfolio",
+  title: "Jiahao's Portfolio",
   description: "Level 1 Software Developer",
 };
 
