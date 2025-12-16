@@ -5,7 +5,7 @@ import React from "react";
 import "../../styles/utilities.css";
 import Image from "next/image";
 import imageSrc from "../../../public/elephant.jpg";
-import prj1ImgSrc2 from "../../../public/prtfloScreenshot2.png";
+import prj1ImgSrc2 from "../../../public/prtfloScreenshot3.png";
 import prj2ImgSrc from "../../../public/flowchart.png"
 import { Github, ExternalLink } from "lucide-react";
 
