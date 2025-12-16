@@ -130,17 +130,17 @@ export default function ContactMe() {
             </form>
           </div>
           <div className="flex flex-col items-center justify-center space-y-6">
-            <Image
-              alt="Jiahao Liu"
-              className="rounded-full border-4 border-blue-500 transition-transform duration-300 hover:scale-105"
-              height={200}
-              src={circleImgSrc}
-              style={{
-                aspectRatio: "200/200",
-                objectFit: "cover",
-              }}
-              width={200}
-            />
+          <Image
+            alt="Jiahao Liu"
+            className="rounded-full transition-transform duration-300 hover:scale-105"
+            height={200}
+            src={circleImgSrc}
+            style={{
+              aspectRatio: "200/200",
+              objectFit: "cover",
+            }}
+            width={200}
+          />
             <div className="text-center">
               <h3 className="text-2xl font-semibold">Jiahao Liu</h3>
               <p className="text-gray-600 dark:text-gray-300 mt-2">Software Developer</p>
