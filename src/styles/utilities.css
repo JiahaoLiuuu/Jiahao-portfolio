@@ -95,3 +95,31 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+
+@keyframes pixel-flow {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.retro-flow {
+  background: linear-gradient(
+    90deg,
+    #1d4ed8 0%,   /* Darker Blue */
+    #3b82f6 40%,  /* Blue */
+    #ffffff 50%,  /* White Highlight */
+    #3b82f6 60%,  /* Blue */
+    #1d4ed8 100%  /* Darker Blue */
+  );
+  
+  background-size: 200% auto;
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+
+  animation: pixel-flow 2s steps(20) infinite; 
+  
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,1));
+}
