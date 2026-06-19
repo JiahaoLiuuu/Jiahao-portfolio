@@ -77,7 +77,7 @@ export default function ContactMe() {
             I am always excited to connect with new people and discuss potential collaborations. Feel free to reach out!
           </p>
         </div>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto max-sm:px-2">
           <div className="contact-card bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
